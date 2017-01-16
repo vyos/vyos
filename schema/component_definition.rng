@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <!--
+       component_definition.rnc: VyConf component definition XML grammar
+    
+       Copyright (C) 2014,2017 VyOS Development Group <maintainers@vyos.net>
+    
+       This library is free software; you can redistribute it and/or
+       modify it under the terms of the GNU Lesser General Public
+       License as published by the Free Software Foundation; either
+       version 2.1 of the License, or (at your option) any later version.
+    
+       This library is distributed in the hope that it will be useful,
+       but WITHOUT ANY WARRANTY; without even the implied warranty of
+       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+       Lesser General Public License for more details.
+    
+       You should have received a copy of the GNU Lesser General Public
+       License along with this library; if not, write to the Free Software
+       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
+       USA
+  -->
+  <start>
+    <element name="component">
+      <ref name="nameAttr"/>
+      <ref name="versionAttr"/>
+      <zeroOrMore>
+        <ref name="description"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="dependencies"/>
+      </zeroOrMore>
+      <ref name="executables"/>
+    </element>
+  </start>
+  <define name="nameAttr">
+    <attribute name="name"/>
+  </define>
+  <define name="versionAttr">
+    <attribute name="version">
+      <ref name="number"/>
+    </attribute>
+  </define>
+  <define name="description">
+    <element name="description">
+      <text/>
+    </element>
+  </define>
+  <define name="dependencies">
+    <element name="dependencies">
+      <oneOrMore>
+        <ref name="dependency"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="dependency">
+    <element name="dependency">
+      <text/>
+    </element>
+  </define>
+  <define name="executables">
+    <element name="executables">
+      <ref name="verify"/>
+      <ref name="update"/>
+      <ref name="apply"/>
+    </element>
+  </define>
+  <define name="verify">
+    <element name="verify">
+      <text/>
+    </element>
+  </define>
+  <define name="update">
+    <element name="update">
+      <text/>
+    </element>
+  </define>
+  <define name="apply">
+    <element name="apply">
+      <text/>
+    </element>
+  </define>
+</grammar>

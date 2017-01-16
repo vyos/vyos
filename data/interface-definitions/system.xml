@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<!-- General system options -->
+
+<interfaceDefinition>
+  <node name="system">
+    <children>
+      <leafNode name="host-name">
+        <properties>
+          <help>System host name</help>
+          <constraint>
+            <regex>[a-z]([a-z0-9\-]+)</regex>
+          </constraint>
+          <constraintErrorMessage>Host name must start with a letter and contain only lowercase letters, digits, and hyphens</constraintErrorMessage>
+        </properties>
+      </leafNode>
+      <leafNode name="name-server">
+        <properties>
+          <multi/>
+          <help>DNS server</help>
+          <constraint>
+            <validator name="ipv4addr"/>
+            <validator name="ipv6addr"/>
+          </constraint>
+          <constraintErrorMessage>DNS server address must be a valid IPv4 or IPv6 address</constraintErrorMessage>
+        </properties>
+      </leafNode>
+      <leafNode name="ntp-server">
+        <properties>
+       	  <multi/>
+          <help>NTP server</help>
+          <constraint>
+       	    <validator name="hostname"/>
+            <validator name="ipv4addr"/>
+       	    <validator name="ipv6addr"/>
+          </constraint>
+          <constraintErrorMessage>NTP server address must be a valid hostname, IPv4, or IPv6 address</constraintErrorMessage>
+        </properties>
+      </leafNode>
+    </children>
+  </node>
+</interfaceDefinition>

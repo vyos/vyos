@@ -1,0 +1,21 @@
+system {
+  login {
+    user vyos {
+      encrypted-password "$6$0qH9IPTOUwKTu$H7f3iyivBvvSR1o8TtD6mL/vQcqblEwIjZNu4auYV20r/xhm6JfbCapCb57bvjAMsD3Fmwdxqg0zJpoJMgTUf0";
+      level root;
+    }
+  }
+  host-name vyos;
+  ntp-server [
+    0.pool.ntp.org;
+    1.pool.ntp.org;
+    2.pool.ntp.org
+  ];
+  config-management {
+    commit-revisions 1000;
+  }
+}
+interaces {
+  loopback lo {
+  }
+}
